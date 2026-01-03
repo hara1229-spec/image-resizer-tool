@@ -1,0 +1,32 @@
+name: Deploy Client to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # mainブランチにプッシュされたら実行
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # Linux環境で実行
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies (Client)
+        run: npm install --prefix client
+
+      - name: Build Client
+        run: npm run build --prefix client
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOY_TOKEN }} # 登録したシークレットを使用
+          publish_dir: ./client/dist                 # client/distをデプロイ
+          publish_branch: gh-pages                  # gh-pagesブランチにプッシュ
