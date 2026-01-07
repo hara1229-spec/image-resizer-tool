@@ -97,7 +97,7 @@ function App() {
 
     try {
       // ★注意：IPアドレス直書き。ドメイン取得後に修正が必要です。
-      const response = await fetch("https://13.230.235.63:5000/api/upload", {
+      const response = await fetch("https://aim-automata-image-modifier.com/api/upload", {
         method: "POST",
         body: formData,
       });
@@ -136,7 +136,7 @@ function App() {
     }
     try{
       // ★注意：IPアドレス直書き。ドメイン取得後に修正が必要です。
-      const response=await fetch("https://13.230.235.63:5000/api/download/all",{
+      const response=await fetch("https://aim-automata-image-modifier.com/api/download/all",{
         method:"POST",
         headers:{
           'Content-Type':'application/json',
@@ -209,7 +209,7 @@ function App() {
 
         {/* 2. ドロップゾーン＆アップロードボタン */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-700">ファイルアップロード</h2>
+          <h2 className="text-xl font-semibold text-gray-700">ファイルアップロード（一度に10枚まで）</h2>
           
           <div
             className={`
@@ -296,7 +296,7 @@ function App() {
                       <span className="text-green-600 ml-3">(成功)</span> -
                       <a
                         // ★注意：IPアドレス直書き。ドメイン取得後に修正が必要です。
-                        href={`https://13.230.235.63:5000/download/${fileInfo.filename}`}
+                        href={`https://aim-automata-image-modifier.com/download/${fileInfo.filename}`}
                         download
                         target="_blank"
                         rel="noopener noreferrer"
